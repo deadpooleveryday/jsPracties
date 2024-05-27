@@ -1,3 +1,9 @@
+const btnRandom = document.querySelector(".random");
+
+const lol = document.querySelectorAll(".sqr__color");
+
+setRandomColors(lol);
+
 function getRandomColor() {
   const red = Math.floor(Math.random() * 256).toString(16);
   const blue = Math.floor(Math.random() * 256).toString(16);
@@ -9,25 +15,24 @@ function getRandomColor() {
   return color;
 }
 
-const lol = document.querySelectorAll(".sqr__color");
-
-function yanchik(el){
-      const gg = getRandomColor().toUpperCase();
-      el.style.backgroundColor = gg;
-      el.style.borderColor = gg;
-      el.querySelector(".copy").textContent = gg;
+function yanchik(el) {
+  const gg = getRandomColor().toUpperCase();
+  el.style.backgroundColor = gg;
+  el.querySelector(".copy").textContent = gg;
 }
 
-lol.forEach((el) => {  
+lol.forEach((el) => {
   el.querySelector(".btn").addEventListener("click", () => {
-yanchik(el);
+    yanchik(el);
   });
 });
 
-const btnRandom = document.querySelector(".random");
+function setRandomColors(el){
+el.forEach((el) => {
+  yanchik(el);
+});
+}
 
-  btnRandom.addEventListener("click", () => {
-    lol.forEach((el) => {
-      yanchik(el);        
-      });
-    });
+btnRandom.addEventListener("click", () => {
+  setRandomColors(lol);
+});
